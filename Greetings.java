@@ -3,10 +3,16 @@ import javax.swing.*;
 
 public class Greetings extends JPanel {
 	
-   private int myWindowWidth = 300;
-   private int myWindowHeight = 400;
+   private int myWindowWidth;
+   private int myWindowHeight;
 	
    public Greetings() {
+      this(300,400);
+   }
+
+   public Greetings(int width, int height){
+      this.myWindowWidth = width;
+      this.myWindowHeight = height;
       JFrame easel = new JFrame();		
       easel.setSize (myWindowWidth, myWindowHeight);
       easel.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
