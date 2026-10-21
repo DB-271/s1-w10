@@ -3,8 +3,7 @@ import javax.swing.*;
 import java.awt.event.*;
 
 public class TrafficLight extends JPanel implements MouseListener {
-    private int xClick = -999;
-    private int yClick = -999;
+    private int lightNum = 0;
 
     public TrafficLight() {
         JFrame myFrame = new JFrame();
@@ -22,24 +21,28 @@ public class TrafficLight extends JPanel implements MouseListener {
         g.drawOval(100, 350, 200, 200);
         g.drawOval(100, 600, 200, 200);
 
-        if()
-        g.setColor(Color.red);
-        g.fillOval(100, 100, 200, 200);
-        g.setColor(Color.yellow);
-        g.fillOval(100, 350, 200, 200);
-        g.setColor(Color.green);
-        g.fillOval(100, 600, 200, 200);
-        if (xClick != -999 && yClick != -999)
-            g.drawOval(xClick, yClick, 100, 100);
+        if (lightNum == 0) {
+            g.setColor(Color.red);
+            g.fillOval(100, 100, 200, 200);
+        } else if (lightNum == 1) {
+            g.setColor(Color.yellow);
+            g.fillOval(100, 350, 200, 200);
+
+        } else {
+            g.setColor(Color.green);
+            g.fillOval(100, 600, 200, 200);
+        }
     }
 
     public void mouseDragged(MouseEvent event) {
-        this.xClick = event.getX();
-        this.yClick = event.getY();
-        repaint();
     }
 
     public void mouseClicked(MouseEvent event) {
+        lightNum++;
+        if (lightNum > 2) {
+            lightNum = 0;
+        }
+        repaint();
     }
 
     public void mouseReleased(MouseEvent event) {
